@@ -54,12 +54,11 @@ public class Philosopher
     }
 
     private boolean tryTakeStick(ChopStick stick) throws InterruptedException {
-        int delay = myRandom.nextInt(100 + DELAY);
-        boolean result = stick.tryTake(delay);
+        boolean result = stick.tryTake();
         if (result) {
-            System.out.println(myName + " took " + stick + " before " + delay + " ms");
+            System.out.println(myName + " took " + stick );
         } else {
-            System.out.println(myName + " could not take " + stick + " before " + delay + " ms");
+            System.out.println(myName + " could not take " + stick );
         }
         return result;
     }
@@ -74,7 +73,7 @@ public class Philosopher
         System.out.println(myName + " Starts Thinking for: " + delay + " ms");
         try {
             sleep(delay);
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException ignored) {
         }
         System.out.println(myName + " Stops Thinking");
     }
@@ -84,7 +83,7 @@ public class Philosopher
         System.out.println(myName + " Starts Eating for:" + delay + " ms");
         try {
             sleep(delay);
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException ignored) {
         }
         System.out.println(myName + " Stops Eating");
     }
